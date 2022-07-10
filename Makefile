@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-O2
-CXXFLAGS=-O2
+CFLAGS=-O2 -Iinclude
+CXXFLAGS=-O2 -Iinclude
 
 all: demo demo2
 

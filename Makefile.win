@@ -1,4 +1,4 @@
-CCFLAGS=/nologo /MD /Ot /fp:precise /W3 /Gd /D_CRT_SECURE_NO_WARNINGS
+CCFLAGS=/nologo /MD /Ot /fp:precise /W3 /Gd /D_CRT_SECURE_NO_WARNINGS /Iinclude
 LINKFLAGS=/nologo /subsystem:console
 LINK=link
 
