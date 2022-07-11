@@ -11,6 +11,7 @@
 
 #if defined(_WIN32)
 #include <io.h>
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
 static WORD win_default_attributes(HANDLE hConsole) {
@@ -361,4 +362,26 @@ void setcurpos(int x, int y) {
         fprintf(stdout, "\033[%d;%dH", y+1, x+1);
 #endif
     }
+}
+
+void gettermsize( int *width, int *height )
+{
+    if ( is_terminal( stdout ) ) {
+#if defined(_WIN32)
+        WORD defaultAttributes;
+        HANDLE hConsole = GetStdHandle( STD_OUTPUT_HANDLE );
+        CONSOLE_SCREEN_BUFFER_INFO info;
+
+        defaultAttributes = win_default_attributes( hConsole );
+
+        if ( !GetConsoleScreenBufferInfo( hConsole, &info ) ) {
+            return;
+        }
+        *width = info.dwSize.X;
+        *height = info.dwSize.Y;
+        return;
+#endif
+    }
+    *width = 80;
+    *height = 25;
 }

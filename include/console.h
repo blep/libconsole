@@ -42,6 +42,8 @@ void setcolor(enum Color color);
 void setbgcolor(enum Color color);
 /* set cursor position */
 void setcurpos(int x, int y);
+/* get terminal size */
+void gettermsize( int *width, int *height );
 
 #ifdef __cplusplus
 }
